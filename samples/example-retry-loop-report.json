@@ -1,0 +1,385 @@
+{
+  "generator": {
+    "name": "Agent Run Inspector",
+    "version": "0.1.1"
+  },
+  "report": {
+    "counts": {
+      "assistant_messages": 2,
+      "messages": 3,
+      "tool_calls": 6,
+      "tool_completed": 1,
+      "tool_errors": 5,
+      "tool_unfinished": 0,
+      "user_messages": 1
+    },
+    "error_fingerprints": [
+      {
+        "count": 4,
+        "error": "exit_code: 1 shell: bash duration_ms: 812 --- stdout --- 1 failed, 12 passed FAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "first_index": 0,
+        "last_index": 3,
+        "tool": "bash"
+      },
+      {
+        "count": 1,
+        "error": "exit_code: 1 - Read timed out after 30s",
+        "first_index": 4,
+        "last_index": 4,
+        "tool": "bash"
+      }
+    ],
+    "largest_outputs": [
+      {
+        "index": 5,
+        "output_chars": 56,
+        "status": "completed",
+        "tool": "bash"
+      }
+    ],
+    "limitations": [
+      "This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.",
+      "\"Identical\" means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.",
+      "An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.",
+      "Missing completion evidence is reported as unknown, not as failure.",
+      "Token counts and cost come from the export as reported by OpenCode; they are not an invoice.",
+      "One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.",
+      "The tool reads a local JSON file only: no network requests, and the input file is never modified."
+    ],
+    "message_errors": [],
+    "messages": [
+      {
+        "agent": null,
+        "cost": null,
+        "error": null,
+        "finish": null,
+        "index": 0,
+        "model": null,
+        "parts": [
+          {
+            "chars": 57,
+            "kind": "text",
+            "text": "CI is red on the test job. Find out why and get it green."
+          }
+        ],
+        "role": "user",
+        "time_completed_ms": null,
+        "time_created_ms": 1781500000000,
+        "tokens": null
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "tool-calls",
+        "index": 1,
+        "model": "test-model",
+        "parts": [
+          {
+            "chars": 54,
+            "kind": "reasoning",
+            "text": "Run the failing command first to see the actual error."
+          },
+          {
+            "call": 0,
+            "kind": "tool"
+          },
+          {
+            "call": 1,
+            "kind": "tool"
+          },
+          {
+            "call": 2,
+            "kind": "tool"
+          },
+          {
+            "call": 3,
+            "kind": "tool"
+          },
+          {
+            "call": 4,
+            "kind": "tool"
+          },
+          {
+            "call": 5,
+            "kind": "tool"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500420500,
+        "time_created_ms": 1781500420000,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "stop",
+        "index": 2,
+        "model": "test-model",
+        "parts": [
+          {
+            "chars": 171,
+            "kind": "text",
+            "text": "The test job fails on tests/test_orders.py::test_rounding. I retried the dependency sync and it completed, but the rounding test still needs a fix before CI will be green."
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500480500,
+        "time_created_ms": 1781500480000,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      }
+    ],
+    "recovered": [
+      {
+        "delta_calls": 1,
+        "delta_ms": 30000,
+        "error": "exit_code: 1 - Read timed out after 30s",
+        "error_index": 4,
+        "recovered_by_index": 5,
+        "tool": "bash"
+      }
+    ],
+    "repeated_operations": [
+      {
+        "completed": 0,
+        "count": 4,
+        "errors": 4,
+        "first_index": 0,
+        "kind": "failing_retry",
+        "label": "Repeated failing calls — identical input, no success observed",
+        "last_index": 3,
+        "occurrences": [
+          {
+            "duration_ms": 850,
+            "index": 0,
+            "status": "error"
+          },
+          {
+            "duration_ms": 850,
+            "index": 1,
+            "status": "error"
+          },
+          {
+            "duration_ms": 850,
+            "index": 2,
+            "status": "error"
+          },
+          {
+            "duration_ms": 850,
+            "index": 3,
+            "status": "error"
+          }
+        ],
+        "other": 0,
+        "tool": "bash"
+      }
+    ],
+    "session": {
+      "agent": "build",
+      "created_ms": 1781500000000,
+      "directory": "C:/work",
+      "export_version": "1.18.31",
+      "id": "ses_demoretry-loop",
+      "model": "test-provider/test-model/default",
+      "parent_id": null,
+      "title": "EXAMPLE — CI red, repeated test failures (synthetic demo)",
+      "updated_ms": 1781501800000
+    },
+    "slowest_calls": [
+      {
+        "duration_ms": 30000,
+        "index": 4,
+        "input": "{\n \"command\": \"pip install -r requirements.txt\",\n \"description\": \"sync deps\"\n}",
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 21000,
+        "index": 5,
+        "input": "{\n \"command\": \"pip install -r requirements.txt\",\n \"description\": \"sync deps\"\n}",
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 850,
+        "index": 0,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 850,
+        "index": 1,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 850,
+        "index": 2,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 850,
+        "index": 3,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "status": "error",
+        "tool": "bash"
+      }
+    ],
+    "state": {
+      "kind": "items",
+      "label": "Finished with unresolved items",
+      "last_finish": "stop",
+      "reasons": [
+        "1 failing tool operation(s) had no later successful identical call"
+      ]
+    },
+    "tool_calls": [
+      {
+        "call_id": "call_bash_1781500001000_error",
+        "duration_ms": 850,
+        "end_ms": 1781500001850,
+        "error": "exit_code: 1 shell: bash duration_ms: 812\n--- stdout ---\n1 failed, 12 passed\nFAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "index": 0,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "input_key": "4e52ddd95b6d",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500001000,
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500002000_error",
+        "duration_ms": 850,
+        "end_ms": 1781500002850,
+        "error": "exit_code: 1 shell: bash duration_ms: 812\n--- stdout ---\n1 failed, 12 passed\nFAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "index": 1,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "input_key": "4e52ddd95b6d",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500002000,
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500003000_error",
+        "duration_ms": 850,
+        "end_ms": 1781500003850,
+        "error": "exit_code: 1 shell: bash duration_ms: 812\n--- stdout ---\n1 failed, 12 passed\nFAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "index": 2,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "input_key": "4e52ddd95b6d",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500003000,
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500004000_error",
+        "duration_ms": 850,
+        "end_ms": 1781500004850,
+        "error": "exit_code: 1 shell: bash duration_ms: 812\n--- stdout ---\n1 failed, 12 passed\nFAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "index": 3,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "input_key": "4e52ddd95b6d",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500004000,
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500300000_error",
+        "duration_ms": 30000,
+        "end_ms": 1781500330000,
+        "error": "exit_code: 1 - Read timed out after 30s",
+        "index": 4,
+        "input": "{\n \"command\": \"pip install -r requirements.txt\",\n \"description\": \"sync deps\"\n}",
+        "input_key": "31b32fe2b6b3",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500300000,
+        "status": "error",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500360000_completed",
+        "duration_ms": 21000,
+        "end_ms": 1781500381000,
+        "error": "",
+        "index": 5,
+        "input": "{\n \"command\": \"pip install -r requirements.txt\",\n \"description\": \"sync deps\"\n}",
+        "input_key": "31b32fe2b6b3",
+        "message_index": 1,
+        "output": "Successfully installed -r requirements.txt (14 packages)",
+        "output_chars": 56,
+        "start_ms": 1781500360000,
+        "status": "completed",
+        "tool": "bash"
+      }
+    ],
+    "tool_stats": [
+      {
+        "avg_ms": 9067,
+        "calls": 6,
+        "completed": 1,
+        "errors": 5,
+        "max_ms": 30000,
+        "other": 0,
+        "tool": "bash"
+      }
+    ],
+    "unresolved": [
+      {
+        "count": 4,
+        "error": "exit_code: 1 shell: bash duration_ms: 812 --- stdout --- 1 failed, 12 passed FAILED tests/test_orders.py::test_rounding - AssertionError: 10.01 != 10.00",
+        "first_index": 0,
+        "input": "{\n \"command\": \"pytest -x -q\",\n \"description\": \"run failing tests\"\n}",
+        "last_index": 3,
+        "tool": "bash"
+      }
+    ],
+    "usage": {
+      "cost": 0.02,
+      "messages_with_usage": 2,
+      "note": "Reported by OpenCode in the export; not an invoice.",
+      "tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 200,
+        "output": 100,
+        "reasoning": 20
+      }
+    },
+    "warnings": []
+  },
+  "schema": "ari.report/1"
+}

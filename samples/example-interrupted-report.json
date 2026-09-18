@@ -1,0 +1,184 @@
+{
+  "generator": {
+    "name": "Agent Run Inspector",
+    "version": "0.1.1"
+  },
+  "report": {
+    "counts": {
+      "assistant_messages": 1,
+      "messages": 2,
+      "tool_calls": 2,
+      "tool_completed": 1,
+      "tool_errors": 0,
+      "tool_unfinished": 1,
+      "user_messages": 1
+    },
+    "error_fingerprints": [],
+    "largest_outputs": [
+      {
+        "index": 0,
+        "output_chars": 15,
+        "status": "completed",
+        "tool": "read"
+      }
+    ],
+    "limitations": [
+      "This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.",
+      "\"Identical\" means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.",
+      "An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.",
+      "Missing completion evidence is reported as unknown, not as failure.",
+      "Token counts and cost come from the export as reported by OpenCode; they are not an invoice.",
+      "One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.",
+      "The tool reads a local JSON file only: no network requests, and the input file is never modified."
+    ],
+    "message_errors": [],
+    "messages": [
+      {
+        "agent": null,
+        "cost": null,
+        "error": null,
+        "finish": null,
+        "index": 0,
+        "model": null,
+        "parts": [
+          {
+            "chars": 44,
+            "kind": "text",
+            "text": "Migrate the config loader to the new schema."
+          }
+        ],
+        "role": "user",
+        "time_completed_ms": null,
+        "time_created_ms": 1781500000000,
+        "tokens": null
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "tool-calls",
+        "index": 1,
+        "model": "test-model",
+        "parts": [
+          {
+            "call": 0,
+            "kind": "tool"
+          },
+          {
+            "call": 1,
+            "kind": "tool"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500000650,
+        "time_created_ms": 1781500000150,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      }
+    ],
+    "recovered": [],
+    "repeated_operations": [],
+    "session": {
+      "agent": "build",
+      "created_ms": 1781500000000,
+      "directory": "C:/work",
+      "export_version": "1.18.31",
+      "id": "ses_demointerrupted",
+      "model": "test-provider/test-model/default",
+      "parent_id": null,
+      "title": "EXAMPLE — config migration, exported mid-run (synthetic demo)",
+      "updated_ms": 1781501800000
+    },
+    "slowest_calls": [
+      {
+        "duration_ms": 70,
+        "index": 0,
+        "input": "{\n \"path\": \"config/loader.py\"\n}",
+        "status": "completed",
+        "tool": "read"
+      }
+    ],
+    "state": {
+      "kind": "unknown",
+      "label": "Unknown — the run may have been interrupted, still in progress, or exported mid-step (last message finish: tool-calls)",
+      "last_finish": "tool-calls",
+      "reasons": [
+        "1 tool call(s) had no recorded completion in this export"
+      ]
+    },
+    "tool_calls": [
+      {
+        "call_id": "call_read_1781500000000_completed",
+        "duration_ms": 70,
+        "end_ms": 1781500000070,
+        "error": "",
+        "index": 0,
+        "input": "{\n \"path\": \"config/loader.py\"\n}",
+        "input_key": "99e9994113ea",
+        "message_index": 1,
+        "output": "(loader source)",
+        "output_chars": 15,
+        "start_ms": 1781500000000,
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "call_id": "call_bash_1781500000100_running",
+        "duration_ms": null,
+        "end_ms": 1100,
+        "error": "",
+        "index": 1,
+        "input": "{\n \"command\": \"pytest tests/test_config.py -q\",\n \"description\": \"run config tests\"\n}",
+        "input_key": "8d6ed6b951e4",
+        "message_index": 1,
+        "output": "",
+        "output_chars": 0,
+        "start_ms": 1781500000100,
+        "status": "running",
+        "tool": "bash"
+      }
+    ],
+    "tool_stats": [
+      {
+        "avg_ms": null,
+        "calls": 1,
+        "completed": 0,
+        "errors": 0,
+        "max_ms": null,
+        "other": 1,
+        "tool": "bash"
+      },
+      {
+        "avg_ms": 70,
+        "calls": 1,
+        "completed": 1,
+        "errors": 0,
+        "max_ms": 70,
+        "other": 0,
+        "tool": "read"
+      }
+    ],
+    "unresolved": [],
+    "usage": {
+      "cost": 0.01,
+      "messages_with_usage": 1,
+      "note": "Reported by OpenCode in the export; not an invoice.",
+      "tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 100,
+        "output": 50,
+        "reasoning": 10
+      }
+    },
+    "warnings": []
+  },
+  "schema": "ari.report/1"
+}

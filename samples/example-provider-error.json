@@ -1,0 +1,147 @@
+{
+ "info": {
+  "id": "ses_demoprovider-error",
+  "title": "EXAMPLE — parser refactor interrupted by provider error (synthetic demo)",
+  "agent": "build",
+  "model": {
+   "id": "test-model",
+   "providerID": "test-provider",
+   "variant": "default"
+  },
+  "version": "1.18.31",
+  "cost": 0.02,
+  "tokens": {
+   "input": 0,
+   "output": 0,
+   "reasoning": 0,
+   "cache": {
+    "read": 0,
+    "write": 0
+   }
+  },
+  "time": {
+   "created": 1781500000000,
+   "updated": 1781501800000
+  },
+  "directory": "C:/work"
+ },
+ "messages": [
+  {
+   "info": {
+    "role": "user",
+    "id": "msg_u1",
+    "sessionID": "ses_test",
+    "time": {
+     "created": 1781500000000
+    }
+   },
+   "parts": [
+    {
+     "type": "text",
+     "text": "Refactor the parser module: extract the tokenizer into its own file."
+    }
+   ]
+  },
+  {
+   "info": {
+    "role": "assistant",
+    "id": "msg_a1",
+    "sessionID": "ses_test",
+    "parentID": "msg_u1",
+    "agent": "build",
+    "modelID": "test-model",
+    "providerID": "test-provider",
+    "time": {
+     "created": 1781500000200,
+     "completed": 1781500000700
+    },
+    "tokens": {
+     "input": 100,
+     "output": 50,
+     "reasoning": 10,
+     "cache": {
+      "read": 0,
+      "write": 0
+     }
+    },
+    "cost": 0.01,
+    "finish": "tool-calls"
+   },
+   "parts": [
+    {
+     "type": "tool",
+     "tool": "read",
+     "callID": "call_read_1781500000000_completed",
+     "state": {
+      "status": "completed",
+      "input": {
+       "path": "src/parser.py"
+      },
+      "time": {
+       "start": 1781500000000,
+       "end": 1781500000090
+      },
+      "output": "(600 lines of parser code)"
+     }
+    },
+    {
+     "type": "tool",
+     "tool": "write",
+     "callID": "call_write_1781500000100_completed",
+     "state": {
+      "status": "completed",
+      "input": {
+       "path": "src/tokenizer.py",
+       "content": "…extracted tokenizer…"
+      },
+      "time": {
+       "start": 1781500000100,
+       "end": 1781500000160
+      },
+      "output": "file written"
+     }
+    }
+   ]
+  },
+  {
+   "info": {
+    "role": "assistant",
+    "id": "msg_a2",
+    "sessionID": "ses_test",
+    "parentID": "msg_a1",
+    "agent": "build",
+    "modelID": "test-model",
+    "providerID": "test-provider",
+    "time": {
+     "created": 1781500060000,
+     "completed": 1781500060500
+    },
+    "tokens": {
+     "input": 100,
+     "output": 50,
+     "reasoning": 10,
+     "cache": {
+      "read": 0,
+      "write": 0
+     }
+    },
+    "cost": 0.01,
+    "finish": "stop",
+    "error": {
+     "name": "APIError",
+     "data": {
+      "message": "Error from provider: rate limit exceeded; retry after 30s",
+      "statusCode": 429,
+      "isRetryable": true
+     }
+    }
+   },
+   "parts": [
+    {
+     "type": "text",
+     "text": "done"
+    }
+   ]
+  }
+ ]
+}

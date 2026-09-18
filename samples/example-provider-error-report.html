@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EXAMPLE — parser refactor interrupted by provider error (synthetic demo) — run report</title>
+<style>
+:root{
+  --bg:#0f1115; --card:#171a21; --card2:#1d2129; --line:#2a2f3a;
+  --text:#e6e8ee; --muted:#9aa3b2; --accent:#5b8cff;
+  --green:#3fb950; --red:#f85149; --amber:#d29922; --chip:#252b36;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+h1{font-size:26px;margin:0 0 4px}
+h2{font-size:18px;margin:34px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:15px;margin:0 0 6px}
+a{color:var(--accent);text-decoration:none}
+code,pre{font:12.5px/1.5 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}
+pre{background:#0b0d11;border:1px solid var(--line);border-radius:8px;
+  padding:10px 12px;overflow:auto;white-space:pre-wrap;word-break:break-word;margin:8px 0}
+.muted{color:var(--muted)}
+small{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;margin:10px 0}
+.banner{border-radius:10px;padding:12px 16px;margin:14px 0;border:1px solid var(--line);font-weight:600}
+.banner.clean{border-color:#1f6f34;background:#12281a;color:#7ee2a0}
+.banner.items{border-color:#6f5a1f;background:#2a2412;color:#e8c76d}
+.banner.unknown{border-color:#3c4354;background:#1a1e27;color:#b9c2d4}
+.banner ul{margin:6px 0 0;font-weight:400}
+.chips{margin:6px 0 0}
+.chip{display:inline-block;background:var(--chip);border:1px solid var(--line);
+  border-radius:999px;padding:2px 10px;margin:2px 6px 2px 0;font-size:12.5px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.stat .v{font-size:22px;font-weight:700}
+.stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.ok{color:var(--green)} .err{color:var(--red)} .warn{color:var(--amber)}
+.badge{display:inline-block;border-radius:6px;padding:1px 7px;font-size:11.5px;font-weight:600}
+.badge.ok{background:#12281a;color:#7ee2a0;border:1px solid #1f6f34}
+.badge.err{background:#2b1517;color:#ff9d97;border:1px solid #7a2a27}
+.badge.other{background:#1a1e27;color:#b9c2d4;border:1px solid #3c4354}
+details{margin:6px 0}
+summary{cursor:pointer;color:var(--muted)}
+summary:hover{color:var(--text)}
+.msg{border-left:3px solid var(--line);padding:8px 0 8px 14px;margin:10px 0}
+.msg.user{border-left-color:var(--accent)}
+.msg.assistant{border-left-color:#4a5568}
+.msg .head{font-size:13px;color:var(--muted);margin-bottom:4px}
+.msg .head b{color:var(--text);font-size:14px}
+.toolrow{margin:8px 0;padding:8px 10px;background:var(--card2);border:1px solid var(--line);border-radius:8px}
+.errbox{background:#2b1517;border:1px solid #7a2a27;border-radius:8px;padding:8px 10px;margin:6px 0}
+.kv{margin:6px 0;font-size:13.5px}
+footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12.5px}
+ul.tight{margin:6px 0 0 18px;padding:0}
+ul.tight li{margin:3px 0}
+</style></head><body><div class='wrap'>
+<h1>EXAMPLE — parser refactor interrupted by provider error (synthetic demo)</h1>
+<div class="chips">
+<span class="chip">session ses_demoprovider-error</span>
+<span class="chip">agent build</span>
+<span class="chip">model test-provider/test-model/default</span>
+<span class="chip">export v1.18.31</span>
+</div>
+<p class="muted">Started 2026-06-15 05:06:40 UTC · last update 2026-06-15 05:36:40 UTC</p>
+<div class="banner items">Finished with unresolved items
+<ul><li>1 assistant message(s) ended with a provider/agent error</li></ul>
+</div>
+<div class="grid">
+<div class="stat"><div class="v">3</div><div class="k">messages</div></div>
+<div class="stat"><div class="v">2</div><div class="k">tool calls</div></div>
+<div class="stat"><div class="v">2</div><div class="k">completed</div></div>
+<div class="stat"><div class="v">0</div><div class="k">failed</div></div>
+<div class="stat"><div class="v">0</div><div class="k">unfinished</div></div>
+<div class="stat"><div class="v">0</div><div class="k">repeated ops</div></div>
+<div class="stat"><div class="v">0</div><div class="k">recovered</div></div>
+<div class="stat"><div class="v">0</div><div class="k">unresolved</div></div>
+</div>
+<h2>Findings</h2>
+<h3>Provider / agent message errors</h3>
+<div class="card"><b>APIError</b> <span class="muted">message <a href="#msg-2">#2</a></span><pre>Error from provider: rate limit exceeded; retry after 30s</pre></div>
+<h2>Tool usage</h2>
+<table><tr><th>Tool</th><th>Calls</th><th>Completed</th><th>Failed</th><th>Avg</th><th>Max</th></tr>
+<tr><td>read</td><td>1</td><td class="ok">1</td><td class="err">0</td><td>90 ms</td><td>90 ms</td></tr>
+<tr><td>write</td><td>1</td><td class="ok">1</td><td class="err">0</td><td>60 ms</td><td>60 ms</td></tr>
+</table>
+<h3>Slowest calls</h3>
+<table><tr><th>Tool</th><th>Call</th><th>Status</th><th>Duration</th></tr>
+<tr><td>read</td><td><a href="#call-0">#0</a></td><td><span class="badge ok">completed</span></td><td>90 ms</td></tr>
+<tr><td>write</td><td><a href="#call-1">#1</a></td><td><span class="badge ok">completed</span></td><td>60 ms</td></tr>
+</table>
+<h3>Largest outputs</h3>
+<table><tr><th>Tool</th><th>Call</th><th>Status</th><th>Output size</th></tr>
+<tr><td>read</td><td><a href="#call-0">#0</a></td><td><span class="badge ok">completed</span></td><td>26 chars</td></tr>
+<tr><td>write</td><td><a href="#call-1">#1</a></td><td><span class="badge ok">completed</span></td><td>12 chars</td></tr>
+</table>
+<h2>Reported usage</h2>
+<div class="card"><span class="muted">Reported by OpenCode in the export; not an invoice.</span><div class="kv">input 200 · output 100 · reasoning 20 · cache read 0 · cache write 0 · cost 0.02</div></div>
+<h2>Timeline</h2>
+<div class="msg user"><div class="head" id="msg-0"><b>user</b> · 2026-06-15 05:06:40 UTC · #0</div><div class='kv'>Refactor the parser module: extract the tokenizer into its own file.</div></div>
+<div class="msg assistant"><div class="head" id="msg-1"><b>assistant</b> · 2026-06-15 05:06:40 UTC · finish: tool-calls · #1</div><div class="toolrow" id="call-0"><div><b>read</b> <span class="badge ok">completed</span> <span class="muted">call #0 · 90 ms</span></div><details><summary>input</summary><pre>{
+ &quot;path&quot;: &quot;src/parser.py&quot;
+}</pre></details><pre>(600 lines of parser code)</pre></div><div class="toolrow" id="call-1"><div><b>write</b> <span class="badge ok">completed</span> <span class="muted">call #1 · 60 ms</span></div><details><summary>input</summary><pre>{
+ &quot;content&quot;: &quot;…extracted tokenizer…&quot;,
+ &quot;path&quot;: &quot;src/tokenizer.py&quot;
+}</pre></details><pre>file written</pre></div></div>
+<div class="msg assistant"><div class="head" id="msg-2"><b>assistant</b> · 2026-06-15 05:07:40 UTC · finish: stop · #2</div><div class="errbox"><b>APIError</b> — this message ended with an error:<pre>Error from provider: rate limit exceeded; retry after 30s</pre></div><div class='kv'>done</div></div>
+<h2>What this report can and cannot tell you</h2>
+<div class='card'><ul class='tight'>
+<li>This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.</li><li>&quot;Identical&quot; means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.</li><li>An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.</li><li>Missing completion evidence is reported as unknown, not as failure.</li><li>Token counts and cost come from the export as reported by OpenCode; they are not an invoice.</li><li>One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.</li><li>The tool reads a local JSON file only: no network requests, and the input file is never modified.</li>
+</ul></div>
+<footer>Generated by Agent Run Inspector v0.1.1 — local, read-only, no network. This report is a static snapshot of one export file.</footer>
+</div></body></html>

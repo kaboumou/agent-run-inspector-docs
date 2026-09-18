@@ -1,0 +1,233 @@
+{
+  "generator": {
+    "name": "Agent Run Inspector",
+    "version": "0.1.1"
+  },
+  "report": {
+    "counts": {
+      "assistant_messages": 2,
+      "messages": 3,
+      "tool_calls": 2,
+      "tool_completed": 2,
+      "tool_errors": 0,
+      "tool_unfinished": 0,
+      "user_messages": 1
+    },
+    "error_fingerprints": [],
+    "largest_outputs": [
+      {
+        "index": 0,
+        "output_chars": 26,
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "index": 1,
+        "output_chars": 12,
+        "status": "completed",
+        "tool": "write"
+      }
+    ],
+    "limitations": [
+      "This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.",
+      "\"Identical\" means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.",
+      "An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.",
+      "Missing completion evidence is reported as unknown, not as failure.",
+      "Token counts and cost come from the export as reported by OpenCode; they are not an invoice.",
+      "One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.",
+      "The tool reads a local JSON file only: no network requests, and the input file is never modified."
+    ],
+    "message_errors": [
+      {
+        "message": "Error from provider: rate limit exceeded; retry after 30s",
+        "message_index": 2,
+        "name": "APIError"
+      }
+    ],
+    "messages": [
+      {
+        "agent": null,
+        "cost": null,
+        "error": null,
+        "finish": null,
+        "index": 0,
+        "model": null,
+        "parts": [
+          {
+            "chars": 68,
+            "kind": "text",
+            "text": "Refactor the parser module: extract the tokenizer into its own file."
+          }
+        ],
+        "role": "user",
+        "time_completed_ms": null,
+        "time_created_ms": 1781500000000,
+        "tokens": null
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "tool-calls",
+        "index": 1,
+        "model": "test-model",
+        "parts": [
+          {
+            "call": 0,
+            "kind": "tool"
+          },
+          {
+            "call": 1,
+            "kind": "tool"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500000700,
+        "time_created_ms": 1781500000200,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": {
+          "message": "Error from provider: rate limit exceeded; retry after 30s",
+          "name": "APIError"
+        },
+        "finish": "stop",
+        "index": 2,
+        "model": "test-model",
+        "parts": [
+          {
+            "chars": 4,
+            "kind": "text",
+            "text": "done"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500060500,
+        "time_created_ms": 1781500060000,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      }
+    ],
+    "recovered": [],
+    "repeated_operations": [],
+    "session": {
+      "agent": "build",
+      "created_ms": 1781500000000,
+      "directory": "C:/work",
+      "export_version": "1.18.31",
+      "id": "ses_demoprovider-error",
+      "model": "test-provider/test-model/default",
+      "parent_id": null,
+      "title": "EXAMPLE — parser refactor interrupted by provider error (synthetic demo)",
+      "updated_ms": 1781501800000
+    },
+    "slowest_calls": [
+      {
+        "duration_ms": 90,
+        "index": 0,
+        "input": "{\n \"path\": \"src/parser.py\"\n}",
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "duration_ms": 60,
+        "index": 1,
+        "input": "{\n \"content\": \"…extracted tokenizer…\",\n \"path\": \"src/tokenizer.py\"\n}",
+        "status": "completed",
+        "tool": "write"
+      }
+    ],
+    "state": {
+      "kind": "items",
+      "label": "Finished with unresolved items",
+      "last_finish": "stop",
+      "reasons": [
+        "1 assistant message(s) ended with a provider/agent error"
+      ]
+    },
+    "tool_calls": [
+      {
+        "call_id": "call_read_1781500000000_completed",
+        "duration_ms": 90,
+        "end_ms": 1781500000090,
+        "error": "",
+        "index": 0,
+        "input": "{\n \"path\": \"src/parser.py\"\n}",
+        "input_key": "2e9431c7d961",
+        "message_index": 1,
+        "output": "(600 lines of parser code)",
+        "output_chars": 26,
+        "start_ms": 1781500000000,
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "call_id": "call_write_1781500000100_completed",
+        "duration_ms": 60,
+        "end_ms": 1781500000160,
+        "error": "",
+        "index": 1,
+        "input": "{\n \"content\": \"…extracted tokenizer…\",\n \"path\": \"src/tokenizer.py\"\n}",
+        "input_key": "8e3fdf26cb29",
+        "message_index": 1,
+        "output": "file written",
+        "output_chars": 12,
+        "start_ms": 1781500000100,
+        "status": "completed",
+        "tool": "write"
+      }
+    ],
+    "tool_stats": [
+      {
+        "avg_ms": 90,
+        "calls": 1,
+        "completed": 1,
+        "errors": 0,
+        "max_ms": 90,
+        "other": 0,
+        "tool": "read"
+      },
+      {
+        "avg_ms": 60,
+        "calls": 1,
+        "completed": 1,
+        "errors": 0,
+        "max_ms": 60,
+        "other": 0,
+        "tool": "write"
+      }
+    ],
+    "unresolved": [],
+    "usage": {
+      "cost": 0.02,
+      "messages_with_usage": 2,
+      "note": "Reported by OpenCode in the export; not an invoice.",
+      "tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 200,
+        "output": 100,
+        "reasoning": 20
+      }
+    },
+    "warnings": []
+  },
+  "schema": "ari.report/1"
+}

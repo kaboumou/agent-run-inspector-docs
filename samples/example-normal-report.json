@@ -1,0 +1,322 @@
+{
+  "generator": {
+    "name": "Agent Run Inspector",
+    "version": "0.1.1"
+  },
+  "report": {
+    "counts": {
+      "assistant_messages": 3,
+      "messages": 4,
+      "tool_calls": 4,
+      "tool_completed": 4,
+      "tool_errors": 0,
+      "tool_unfinished": 0,
+      "user_messages": 1
+    },
+    "error_fingerprints": [],
+    "largest_outputs": [
+      {
+        "index": 0,
+        "output_chars": 44,
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "index": 2,
+        "output_chars": 18,
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "index": 3,
+        "output_chars": 18,
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "index": 1,
+        "output_chars": 12,
+        "status": "completed",
+        "tool": "edit"
+      }
+    ],
+    "limitations": [
+      "This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.",
+      "\"Identical\" means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.",
+      "An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.",
+      "Missing completion evidence is reported as unknown, not as failure.",
+      "Token counts and cost come from the export as reported by OpenCode; they are not an invoice.",
+      "One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.",
+      "The tool reads a local JSON file only: no network requests, and the input file is never modified."
+    ],
+    "message_errors": [],
+    "messages": [
+      {
+        "agent": null,
+        "cost": null,
+        "error": null,
+        "finish": null,
+        "index": 0,
+        "model": null,
+        "parts": [
+          {
+            "chars": 69,
+            "kind": "text",
+            "text": "Add a /health endpoint to the API and make sure the tests still pass."
+          }
+        ],
+        "role": "user",
+        "time_completed_ms": null,
+        "time_created_ms": 1781500000000,
+        "tokens": null
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "tool-calls",
+        "index": 1,
+        "model": "test-model",
+        "parts": [
+          {
+            "chars": 56,
+            "kind": "reasoning",
+            "text": "Check the app entrypoint and test layout before editing."
+          },
+          {
+            "call": 0,
+            "kind": "tool"
+          },
+          {
+            "call": 1,
+            "kind": "tool"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500000700,
+        "time_created_ms": 1781500000200,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "tool-calls",
+        "index": 2,
+        "model": "test-model",
+        "parts": [
+          {
+            "call": 2,
+            "kind": "tool"
+          },
+          {
+            "call": 3,
+            "kind": "tool"
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500063500,
+        "time_created_ms": 1781500063000,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      },
+      {
+        "agent": "build",
+        "cost": 0.01,
+        "error": null,
+        "finish": "stop",
+        "index": 3,
+        "model": "test-model",
+        "parts": [
+          {
+            "chars": 84,
+            "kind": "text",
+            "text": "Added the /health endpoint to api/main.py. Tests pass (45 passed) and lint is clean."
+          }
+        ],
+        "role": "assistant",
+        "time_completed_ms": 1781500120500,
+        "time_created_ms": 1781500120000,
+        "tokens": {
+          "cache": {
+            "read": 0,
+            "write": 0
+          },
+          "input": 100,
+          "output": 50,
+          "reasoning": 10
+        }
+      }
+    ],
+    "recovered": [],
+    "repeated_operations": [],
+    "session": {
+      "agent": "build",
+      "created_ms": 1781500000000,
+      "directory": "C:/work",
+      "export_version": "1.18.31",
+      "id": "ses_demonormal",
+      "model": "test-provider/test-model/default",
+      "parent_id": null,
+      "title": "EXAMPLE — add /health endpoint (synthetic demo)",
+      "updated_ms": 1781501800000
+    },
+    "slowest_calls": [
+      {
+        "duration_ms": 2400,
+        "index": 2,
+        "input": "{\n \"command\": \"pytest tests/test_api.py -q\",\n \"description\": \"run API tests\"\n}",
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 400,
+        "index": 3,
+        "input": "{\n \"command\": \"ruff check api\",\n \"description\": \"lint\"\n}",
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "duration_ms": 120,
+        "index": 0,
+        "input": "{\n \"path\": \"api/main.py\"\n}",
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "duration_ms": 50,
+        "index": 1,
+        "input": "{\n \"new\": \"app = FastAPI()\\n\\n@app.get('/health')\\ndef health():\\n    return {'status': 'ok'}\",\n \"old\": \"app = FastAPI()\",\n \"path\": \"api/main.py\"\n}",
+        "status": "completed",
+        "tool": "edit"
+      }
+    ],
+    "state": {
+      "kind": "clean",
+      "label": "Finished — no unresolved items detected in the export",
+      "last_finish": "stop",
+      "reasons": []
+    },
+    "tool_calls": [
+      {
+        "call_id": "call_read_1781500000000_completed",
+        "duration_ms": 120,
+        "end_ms": 1781500000120,
+        "error": "",
+        "index": 0,
+        "input": "{\n \"path\": \"api/main.py\"\n}",
+        "input_key": "107c54800137",
+        "message_index": 1,
+        "output": "from fastapi import FastAPI\napp = FastAPI()\n",
+        "output_chars": 44,
+        "start_ms": 1781500000000,
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "call_id": "call_edit_1781500000130_completed",
+        "duration_ms": 50,
+        "end_ms": 1781500000180,
+        "error": "",
+        "index": 1,
+        "input": "{\n \"new\": \"app = FastAPI()\\n\\n@app.get('/health')\\ndef health():\\n    return {'status': 'ok'}\",\n \"old\": \"app = FastAPI()\",\n \"path\": \"api/main.py\"\n}",
+        "input_key": "1dde7fa549fd",
+        "message_index": 1,
+        "output": "edit applied",
+        "output_chars": 12,
+        "start_ms": 1781500000130,
+        "status": "completed",
+        "tool": "edit"
+      },
+      {
+        "call_id": "call_bash_1781500060000_completed",
+        "duration_ms": 2400,
+        "end_ms": 1781500062400,
+        "error": "",
+        "index": 2,
+        "input": "{\n \"command\": \"pytest tests/test_api.py -q\",\n \"description\": \"run API tests\"\n}",
+        "input_key": "0bf9e9bd412f",
+        "message_index": 2,
+        "output": "45 passed in 2.31s",
+        "output_chars": 18,
+        "start_ms": 1781500060000,
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "call_id": "call_bash_1781500062500_completed",
+        "duration_ms": 400,
+        "end_ms": 1781500062900,
+        "error": "",
+        "index": 3,
+        "input": "{\n \"command\": \"ruff check api\",\n \"description\": \"lint\"\n}",
+        "input_key": "80eac2351eed",
+        "message_index": 2,
+        "output": "All checks passed!",
+        "output_chars": 18,
+        "start_ms": 1781500062500,
+        "status": "completed",
+        "tool": "bash"
+      }
+    ],
+    "tool_stats": [
+      {
+        "avg_ms": 1400,
+        "calls": 2,
+        "completed": 2,
+        "errors": 0,
+        "max_ms": 2400,
+        "other": 0,
+        "tool": "bash"
+      },
+      {
+        "avg_ms": 50,
+        "calls": 1,
+        "completed": 1,
+        "errors": 0,
+        "max_ms": 50,
+        "other": 0,
+        "tool": "edit"
+      },
+      {
+        "avg_ms": 120,
+        "calls": 1,
+        "completed": 1,
+        "errors": 0,
+        "max_ms": 120,
+        "other": 0,
+        "tool": "read"
+      }
+    ],
+    "unresolved": [],
+    "usage": {
+      "cost": 0.03,
+      "messages_with_usage": 3,
+      "note": "Reported by OpenCode in the export; not an invoice.",
+      "tokens": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 300,
+        "output": 150,
+        "reasoning": 30
+      }
+    },
+    "warnings": []
+  },
+  "schema": "ari.report/1"
+}
