@@ -18,6 +18,17 @@ itself is a finished commercial product (one-time purchase):
 - Store: https://payhip.com/Superkamoubot
 - Walkthrough (Payhip blog): https://payhip.com/Superkamoubot/blog/superkamoubot/how-to-inspect-repeated-opencode-tool-calls-from-a-session-export
 
+## Live examples (GitHub Pages)
+
+Open any synthetic sample report straight in a browser — no download needed:
+
+- [Retry loop](https://kaboumou.github.io/agent-run-inspector-docs/samples/example-retry-loop-report.html)
+- [Normal session](https://kaboumou.github.io/agent-run-inspector-docs/samples/example-normal-report.html)
+- [Provider error](https://kaboumou.github.io/agent-run-inspector-docs/samples/example-provider-error-report.html)
+- [Interrupted session](https://kaboumou.github.io/agent-run-inspector-docs/samples/example-interrupted-report.html)
+
+Landing page: https://kaboumou.github.io/agent-run-inspector-docs/
+
 ## What is in here
 
 - `samples/` — four **synthetic** example sessions and the reports Agent Run

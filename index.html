@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Run Inspector — live sample reports</title>
+<meta name="description" content="Read-only HTML/JSON reports for OpenCode session exports: repeated tool calls, failures, completion state. Synthetic sample reports you can open right now.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0b1220; color: #e6edf3;
+    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 24px 64px; }
+  h1 { font-size: 1.7rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+  h2 { font-size: 1.05rem; margin: 36px 0 12px; color: #9fb3c8; text-transform: uppercase; letter-spacing: 0.08em; }
+  p.lead { color: #b6c2cf; margin: 0 0 8px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin: 0 0 10px; }
+  a { color: #34d399; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .card {
+    display: block; padding: 14px 16px; border: 1px solid #1f2b3a; border-radius: 10px;
+    background: #0f1a2a; transition: border-color .15s ease;
+  }
+  .card:hover { border-color: #34d399; text-decoration: none; }
+  .card b { color: #e6edf3; display: block; }
+  .card span { color: #8b9bb0; font-size: 0.92rem; }
+  footer { margin-top: 48px; color: #6b7c93; font-size: 0.85rem; border-top: 1px solid #1f2b3a; padding-top: 16px; }
+  .accent { color: #34d399; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Agent Run Inspector</h1>
+  <p class="lead">Local, read-only reports for OpenCode session exports — repeated identical tool calls, recovered vs unresolved failures, completion state, tool and usage statistics. Standard-library Python, no network calls, input never modified.</p>
+
+  <h2>Live sample reports (synthetic data)</h2>
+  <ul>
+    <li><a class="card" href="samples/example-retry-loop-report.html"><b>Retry loop</b><span>A failing tool call repeating with no success — the retry-loop findings view.</span></a></li>
+    <li><a class="card" href="samples/example-normal-report.html"><b>Normal session</b><span>A clean run: no repeats, one recovered retry, completed.</span></a></li>
+    <li><a class="card" href="samples/example-provider-error-report.html"><b>Provider error</b><span>A run that died on a provider error mid-step.</span></a></li>
+    <li><a class="card" href="samples/example-interrupted-report.html"><b>Interrupted session</b><span>A run that stopped mid-step with unresolved items.</span></a></li>
+  </ul>
+
+  <h2>Links</h2>
+  <ul>
+    <li><a href="https://github.com/kaboumou/agent-run-inspector-docs">Documentation &amp; sample pack (GitHub)</a> — quickstart, how-to-read guide, all samples</li>
+    <li><a href="https://payhip.com/b/I6OnS">Free demo pack</a> · <a href="https://payhip.com/b/iF1Av">Individual — $49</a> · <a href="https://payhip.com/b/w10Iu">Team — $149</a></li>
+    <li><a href="https://payhip.com/Superkamoubot/blog/superkamoubot/how-to-inspect-repeated-opencode-tool-calls-from-a-session-export">Walkthrough: inspect repeated OpenCode tool calls</a></li>
+  </ul>
+
+  <footer>Reports on this page were generated from synthetic sample data. The tool is read-only and makes no network requests. The software itself is a paid download; this page and the samples are free.</footer>
+</main>
+</body>
+</html>
