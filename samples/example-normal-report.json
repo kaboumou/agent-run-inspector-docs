@@ -1,7 +1,7 @@
 {
   "generator": {
     "name": "Agent Run Inspector",
-    "version": "0.1.1"
+    "version": "0.1.2"
   },
   "report": {
     "counts": {

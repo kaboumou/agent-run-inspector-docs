@@ -32,7 +32,7 @@ Landing page: https://kaboumou.github.io/agent-run-inspector-docs/
 ## What is in here
 
 - `samples/` — four **synthetic** example sessions and the reports Agent Run
-  Inspector 0.1.1 generates from them, including a repeated-failure loop and a
+  Inspector generates from them, including a repeated-failure loop and a
   recovered-failure case. Everything is fabricated for demonstration; no real
   user data. Each sample comes as the input JSON plus the generated HTML and
   JSON reports.

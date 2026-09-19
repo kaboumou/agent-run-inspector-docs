@@ -1,7 +1,7 @@
 # How to read an Agent Run Inspector report
 
 This is the exact workflow and a field-by-field explanation of what the report
-shows — and what it cannot show. It applies to Agent Run Inspector 0.1.1.
+shows — and what it cannot show. It applies to the Agent Run Inspector 0.1.x line.
 
 ## The workflow
 
