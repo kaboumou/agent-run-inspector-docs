@@ -49,6 +49,25 @@ Tool usage counts, slowest calls, largest outputs, and provider-reported
 token/cost figures. The token and cost numbers are **as reported by OpenCode
 in the export** — useful for trend-finding, not invoice-grade accounting.
 
+### Attached files, patches and compaction markers
+
+Newer exports also contain non-tool events, and the report shows them in the
+timeline:
+
+- **Attached files** appear as `[attached file]` with the file name, MIME type
+  and size. The embedded payload is summarized, never copied into the report —
+  so the report stays shareable even when the export embeds file content.
+- **Patches** appear as `[patch applied — N file(s) changed]` with the paths
+  each patch touched. The **Files changed in this run** section aggregates all
+  patched paths, so you can see the run's footprint at a glance.
+- **Context compactions** appear as `[context compaction]` markers (with
+  *automatic* / *context overflow* flags when the export records them). They
+  mark points where the agent's context was compacted — useful when a run
+  seems to "forget" earlier state.
+
+These events have no status and are never counted as tool failures; they are
+context, not findings.
+
 ## What the report cannot tell you
 
 - Whether the run's *result* was correct — it reports mechanics, not semantics.

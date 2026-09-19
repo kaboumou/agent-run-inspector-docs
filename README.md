@@ -2,7 +2,8 @@
 
 Agent Run Inspector turns an `opencode export` session file into a single
 self-contained HTML report: repeated tool calls (classified), recovered vs
-unresolved failures, completion state, tool statistics and provider-reported
+unresolved failures, completion state, tool statistics, attached files,
+applied patches and context-compaction markers, plus provider-reported
 usage. It runs locally, uses only the Python standard library, makes no
 network requests, and never modifies its input.
 
