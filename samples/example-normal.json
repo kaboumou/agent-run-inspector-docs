@@ -39,6 +39,12 @@
     {
      "type": "text",
      "text": "Add a /health endpoint to the API and make sure the tests still pass."
+    },
+    {
+     "type": "file",
+     "filename": "requirements.txt",
+     "mime": "text/plain",
+     "url": "data:text/plain;base64,ZmFzdGFwaT09MC4xMTUKdXZpY29ybj09MC4yOQo="
     }
    ]
   },
@@ -105,6 +111,13 @@
       },
       "output": "edit applied"
      }
+    },
+    {
+     "type": "patch",
+     "files": [
+      "api/main.py"
+     ],
+     "hash": "deadbeefcafe"
     }
    ]
   },

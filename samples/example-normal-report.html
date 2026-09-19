@@ -77,9 +77,15 @@ ul.tight li{margin:3px 0}
 <div class="stat"><div class="v">0</div><div class="k">repeated ops</div></div>
 <div class="stat"><div class="v">0</div><div class="k">recovered</div></div>
 <div class="stat"><div class="v">0</div><div class="k">unresolved</div></div>
+<div class="stat"><div class="v">1</div><div class="k">files attached</div></div>
+<div class="stat"><div class="v">1</div><div class="k">patches</div></div>
 </div>
 <h2>Findings</h2>
 <div class="card">No repeated identical operations, recovered failures, unresolved failures, or provider errors were detected in this export.</div>
+<h2>Files changed in this run</h2>
+<table><tr><th>Path</th><th>Patch events</th></tr>
+<tr><td><code>api/main.py</code></td><td>1</td></tr>
+</table>
 <h2>Tool usage</h2>
 <table><tr><th>Tool</th><th>Calls</th><th>Completed</th><th>Failed</th><th>Avg</th><th>Max</th></tr>
 <tr><td>bash</td><td>2</td><td class="ok">2</td><td class="err">0</td><td>1.4 s</td><td>2.4 s</td></tr>
@@ -103,7 +109,7 @@ ul.tight li{margin:3px 0}
 <h2>Reported usage</h2>
 <div class="card"><span class="muted">Reported by OpenCode in the export; not an invoice.</span><div class="kv">input 300 · output 150 · reasoning 30 · cache read 0 · cache write 0 · cost 0.03</div></div>
 <h2>Timeline</h2>
-<div class="msg user"><div class="head" id="msg-0"><b>user</b> · 2026-06-15 05:06:40 UTC · #0</div><div class='kv'>Add a /health endpoint to the API and make sure the tests still pass.</div></div>
+<div class="msg user"><div class="head" id="msg-0"><b>user</b> · 2026-06-15 05:06:40 UTC · #0</div><div class='kv'>Add a /health endpoint to the API and make sure the tests still pass.</div><div class="kv"><b>[attached file]</b> requirements.txt <span class="muted">— text/plain, 29 B, content embedded in export, not expanded here</span></div></div>
 <div class="msg assistant"><div class="head" id="msg-1"><b>assistant</b> · 2026-06-15 05:06:40 UTC · finish: tool-calls · #1</div><details><summary>reasoning (56 chars)</summary><pre>Check the app entrypoint and test layout before editing.</pre></details><div class="toolrow" id="call-0"><div><b>read</b> <span class="badge ok">completed</span> <span class="muted">call #0 · 120 ms</span></div><details><summary>input</summary><pre>{
  &quot;path&quot;: &quot;api/main.py&quot;
 }</pre></details><details><summary>output (44 chars)</summary><pre>from fastapi import FastAPI
@@ -112,7 +118,7 @@ app = FastAPI()
  &quot;new&quot;: &quot;app = FastAPI()\n\n@app.get(&#x27;/health&#x27;)\ndef health():\n    return {&#x27;status&#x27;: &#x27;ok&#x27;}&quot;,
  &quot;old&quot;: &quot;app = FastAPI()&quot;,
  &quot;path&quot;: &quot;api/main.py&quot;
-}</pre></details><pre>edit applied</pre></div></div>
+}</pre></details><pre>edit applied</pre></div><details><summary>[patch applied — 1 file(s) changed]</summary><ul class="tight"><li><code>api/main.py</code></li></ul></details></div>
 <div class="msg assistant"><div class="head" id="msg-2"><b>assistant</b> · 2026-06-15 05:07:43 UTC · finish: tool-calls · #2</div><div class="toolrow" id="call-2"><div><b>bash</b> <span class="badge ok">completed</span> <span class="muted">call #2 · 2.4 s</span></div><details><summary>input</summary><pre>{
  &quot;command&quot;: &quot;pytest tests/test_api.py -q&quot;,
  &quot;description&quot;: &quot;run API tests&quot;
@@ -123,7 +129,7 @@ app = FastAPI()
 <div class="msg assistant"><div class="head" id="msg-3"><b>assistant</b> · 2026-06-15 05:08:40 UTC · finish: stop · #3</div><div class='kv'>Added the /health endpoint to api/main.py. Tests pass (45 passed) and lint is clean.</div></div>
 <h2>What this report can and cannot tell you</h2>
 <div class='card'><ul class='tight'>
-<li>This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.</li><li>&quot;Identical&quot; means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.</li><li>An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.</li><li>Missing completion evidence is reported as unknown, not as failure.</li><li>Token counts and cost come from the export as reported by OpenCode; they are not an invoice.</li><li>One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.</li><li>The tool reads a local JSON file only: no network requests, and the input file is never modified.</li>
+<li>This report describes what the exported data shows. It does not prove that a run was correct, complete, or caused any particular outcome.</li><li>&quot;Identical&quot; means canonical-JSON-equal tool input. Calls that differ only in volatile values (timestamps, random ids) are not grouped.</li><li>An identical call repeated after a success is not necessarily a bug; it may be polling, verification, or a re-read.</li><li>Missing completion evidence is reported as unknown, not as failure.</li><li>Token counts and cost come from the export as reported by OpenCode; they are not an invoice.</li><li>One export file covers one session. Subagent/child sessions appear as separate exports and need their own run.</li><li>Attached files and patches are summarized (names, sizes, paths); embedded file content is not expanded into the report.</li><li>The tool reads a local JSON file only: no network requests, and the input file is never modified.</li>
 </ul></div>
-<footer>Generated by Agent Run Inspector v0.1.2 — local, read-only, no network. This report is a static snapshot of one export file.</footer>
+<footer>Generated by Agent Run Inspector v0.1.3 — local, read-only, no network. This report is a static snapshot of one export file.</footer>
 </div></body></html>

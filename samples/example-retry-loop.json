@@ -69,6 +69,12 @@
    },
    "parts": [
     {
+     "type": "compaction",
+     "auto": true,
+     "overflow": true,
+     "tail_start_id": "msg_x"
+    },
+    {
      "type": "reasoning",
      "text": "Run the failing command first to see the actual error."
     },
