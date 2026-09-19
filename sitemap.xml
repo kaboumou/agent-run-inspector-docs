@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/docs/how-to-read-the-report.html</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/samples/example-normal-report.html</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/samples/example-retry-loop-report.html</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/samples/example-provider-error-report.html</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+  <url>
+    <loc>https://kaboumou.github.io/agent-run-inspector-docs/samples/example-interrupted-report.html</loc>
+    <lastmod>2026-09-18</lastmod>
+  </url>
+</urlset>
