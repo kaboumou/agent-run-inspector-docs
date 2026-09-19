@@ -17,7 +17,8 @@ itself is a finished commercial product (one-time purchase):
 - **Team licence — USD $149** (one organization, up to five named users):
   https://payhip.com/b/w10Iu
 - Store: https://payhip.com/Superkamoubot
-- Walkthrough (Payhip blog): https://payhip.com/Superkamoubot/blog/superkamoubot/how-to-inspect-repeated-opencode-tool-calls-from-a-session-export
+- Walkthrough (Payhip blog): [How to inspect repeated OpenCode tool calls from a session export](https://payhip.com/Superkamoubot/blog/superkamoubot/how-to-inspect-repeated-opencode-tool-calls-from-a-session-export)
+- Guide (Payhip blog): [How to export an OpenCode session (and what is inside the file)](https://payhip.com/Superkamoubot/blog/superkamoubot/how-to-export-an-opencode-session-and-what-is-inside-the-file)
 
 ## Live examples (GitHub Pages)
 
